@@ -1,0 +1,872 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+  font-family: 'Oswald', sans-serif;
+}
+body, html {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  background: #000;
+  overflow-x: hidden;
+}
+
+
+.wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: #000;
+  clip-path: circle(25px at calc(100% - 45px) 45px);
+  transition: all 0.3s ease-in-out;
+  z-index: 10;
+}
+
+#active:checked ~ .wrapper {
+  clip-path: circle(75%);
+}
+
+.menu-btn {
+  position: absolute;
+  z-index: 100;
+  right: 20px;
+  top: 20px;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 50%;
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
+  background: #000;
+  transition: all 0.3s ease-in-out;
+}
+
+#active:checked ~ .menu-btn i:before {
+  content: "\f00d"; /* 변경된 아이콘 */
+}
+
+.wrapper ul {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  list-style: none;
+  text-align: center;
+  z-index: 20;
+}
+
+.wrapper ul li {
+  margin: 15px 0;
+}
+
+.wrapper ul li a {
+  text-decoration: none;
+  font-size: 30px;
+  font-weight: 500;
+  padding: 5px 30px;
+  color: #fff;
+  border-radius: 50px;
+  background: #000;
+  position: relative;
+  line-height: 50px;
+  transition: all 0.3s ease;
+}
+
+.wrapper ul li a:after {
+  position: absolute;
+  content: "";
+  background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);
+  width: 104%;
+  height: 110%;
+  left: -2%;
+  top: -5%;
+  border-radius: 50px;
+  transform: scaleY(0);
+  z-index: -1;
+  animation: rotate 1.5s linear infinite;
+  transition: transform 0.3s ease;
+}
+
+.wrapper ul li a:hover:after {
+  transform: scaleY(1);
+}
+
+.wrapper ul li a:hover {
+  color: #fff;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
+  color: #202020;
+  z-index: -1;
+}
+
+.content .title {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.content p {
+  font-size: 35px;
+  font-weight: 600;
+}
+
+@keyframes rotate {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+/* 별똥별 시작 */
+:root {
+  --shooting-time: 4000ms;
+}
+
+
+.shooting_star {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  height: 2px;
+  background: linear-gradient(-45deg, rgba(95, 145, 255, 0.35), rgba(0, 0, 255, 0));
+  border-radius: 999px;
+  filter: drop-shadow(0 0 6px rgba(105, 155, 255, 1));
+  animation:
+    tail var(--shooting-time) linear infinite,
+    shooting var(--shooting-time) linear infinite;
+}
+
+/* tail 애니메이션의 키프레임 */
+@keyframes tail {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  
+  25% {
+    opacity: 1;
+  }
+  
+  75% {
+    opacity: 1;
+  }
+  
+  100% {
+    width: 100%;
+    opacity: 0;
+  }
+}
+
+/* shooting 애니메이션의 키프레임 */
+@keyframes shooting {
+  0% {
+    transform: translateX(0);
+  }
+  
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* 각 shooting_star 요소에 대한 스타일 */
+.shooting_star:nth-child(1)  { animation-delay: 0ms; top: 7%; }
+.shooting_star:nth-child(2)  { animation-delay: 220ms; top: 15%; }
+.shooting_star:nth-child(3)  { animation-delay: 450ms; top: 25%; }
+.shooting_star:nth-child(4)  { animation-delay: 90ms; top: 35%; }
+.shooting_star:nth-child(5)  { animation-delay: 600ms; top: 50%; }
+.shooting_star:nth-child(6)  { animation-delay: 130ms; top: 63%; }
+.shooting_star:nth-child(7)  { animation-delay: 880ms; top: 42%; }
+.shooting_star:nth-child(8)  { animation-delay: 1110ms; top: 78%; }
+.shooting_star:nth-child(9)  { animation-delay: 590ms; top: 88%; }
+.shooting_star:nth-child(10) { animation-delay: 1570ms; top: 10%; }
+.shooting_star:nth-child(11) { animation-delay: 330ms; top: 18%; }
+.shooting_star:nth-child(12) { animation-delay: 1430ms; top: 70%; }
+.shooting_star:nth-child(13) { animation-delay: 770ms; top: 37%; }
+.shooting_star:nth-child(14) { animation-delay: 1910ms; top: 52%; }
+.shooting_star:nth-child(15) { animation-delay: 500ms; top: 85%; }
+.shooting_star:nth-child(16) { animation-delay: 2020ms; top: 58%; }
+.shooting_star:nth-child(17) { animation-delay: 111ms; top: 28%; }
+.shooting_star:nth-child(18) { animation-delay: 1770ms; top: 67%; }
+.shooting_star:nth-child(19) { animation-delay: 420ms; top: 11%; }
+.shooting_star:nth-child(20) { animation-delay: 960ms; top: 92%; }
+
+/* 별똥별 끝 */
+/* 덱스트 */
+.iphonetop {
+  color: #86E2F0;
+  text-align: center;
+  margin-top: 120px;
+}
+.iphonetop h2 {
+  font-size: 100px;
+  color: #86E2F0;
+}
+/* 텍스트 끝 */
+
+/* 모바일 디자인 */
+#wrapper {
+  height: 520px;
+  width: 800px;
+  margin-left: -400px;
+  margin-top: -260px;
+  position: absolute;
+  perspective: 6000px;
+  top: 50%;
+  left: 50%;
+}
+#iphone {
+  height: 760px;
+  width: 372px;
+  border-radius: 50px;
+  position: absolute;
+  background: none; 
+  box-shadow: none;
+  left: 206px;
+  top: -140px;
+  transform: rotateX(54deg) rotateZ(-46deg);
+  transform-style: preserve-3d;
+}
+#side {
+ background: #CDD0D5;
+  width: 393px;
+  height: 780px;
+  border-top-left-radius: 77px;
+  border-bottom-left-radius: 49px;
+  border-bottom-right-radius: 86px;
+  border-top-right-radius: 70px;
+  position: absolute;
+  top: 0px;
+  left: -15px;
+  box-shadow: inset #3D3E42 0 0 15px 9px;
+  transform: translateZ(-10px);
+}
+#front {
+  width: 362px;
+  height: 750px;
+  border-radius: 49px;
+  position: absolute;
+  background-image: -webkit-linear-gradient(-27deg,#444,#000 10%, #000 42%, #333, #000 57%, #000 91%, #444);
+  left: 5px;
+  top: 5px;
+  box-shadow: inset #000 0 0 0 4px, #555 0px 0 3px 0px, #222 -3px 2px, #000 -5px 5px, #E0E0E0 -7px 6px 1px, #6D6D6D -7px 6px 9px;
+   transform: translateZ(1px);
+}
+#front-cover {
+  width: 344px;
+  height: 734px;
+  background: #000;
+  border-radius: 39px;
+  position: absolute;
+  top: 8px;
+  left: 9px;
+}
+
+#home {
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: -webkit-linear-gradient(32deg,#666,#000,#666);
+  top: 684px;
+  left: 160px;
+}
+#home div {
+  background: #000;
+  border-radius: 50%;
+  width: 46px;
+  height: 46px;
+  position: absolute;
+  left: 3px;
+  top: 3px;
+}
+
+#camera {
+  width: 11px;
+  height: 11px;
+  background: #000;
+  position: absolute;
+  top: 35px;
+  left: 124px;
+  border-radius: 50%;
+  box-shadow: inset #666 -5px 2px 9px -2px;
+}
+#camera div {
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(#E1E4F5,#0D2B69 33%);
+  background-position: -1px -1px;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  border-radius: 50%;
+}
+
+#speaker {
+  width: 50px;
+  height: 4px;
+  border-radius: 2px;
+  background: #555;
+  position: absolute;
+  top: 39px;
+  left: 156px;
+  box-shadow: inset #222 0 0px 4px;
+}
+
+#volume {
+  height: 128px;
+  width: 11px;
+  border-radius: 10px;
+  position: absolute;
+  background: #F9F9FA;
+  top: 171px;
+  left: -20px;
+  transform: rotateY(95deg);
+  transform-style: preserve-3d;
+  box-shadow: inset #292A2F 4px 0 8px 1px, #D5D5D5 -1px 0px 2px;
+}
+#volume div {
+  width: 8px;
+  height: 55px;
+  background: #BBBCC0;
+  border-radius: 10px;
+  position: absolute;
+  box-shadow: #eee -1px 1px, #777 -1px 3px,  #505057 -3px 3px, inset #909197 -3px 0 3px;
+}
+
+#volume div:first-child {
+  top: 2px;
+  left: 4px;
+}
+#volume div:last-child {
+  top: 69px;
+  left: 4px;
+}
+
+#toggler {
+  height: 34px;
+  width: 8px;
+  border-radius: 10px;
+  position: absolute;
+  background: #2B2C31;
+  top: 105px;
+  left: -20px;
+  transform: rotateY(95deg);
+  transform-style: preserve-3d;
+  box-shadow: inset #292A2F 4px 0 8px 1px, #D5D5D5 -1px 0px 2px;
+}
+#toggler div {
+  width: 4px;
+  height: 31px;
+  background: #BBBCC0;
+  border-radius: 10px;
+  position: absolute;
+  box-shadow: #eee -1px 1px, #777 -2px 3px, #505057 -3px 3px, inset #909197 -3px 0 3px;
+  top: -1px;
+  left: 3px;
+}
+
+#aux {
+  width: 19px;
+  height: 19px;
+  background: #3B3B3B;
+  border-radius: 50%;
+  transform: rotateX(90deg) translateZ(1px);
+  transform-style: preserve-3d;
+  position: absolute;
+  top: 766px;
+  left: 45px;
+  box-shadow: inset #000 6px -3px 10px 1px, #C7C7C7 1px 0px 1px;
+}
+
+#lightning {
+  width: 48px;
+  height: 12px;
+  border-radius: 10px;
+  background: #3F3F3F;
+  transform: rotateX(90deg) translate3d(0px,1px,0px);
+  top: 771px;
+  position: absolute;
+  left: 139px;
+  box-shadow: inset #8E8F94 -1px 1px 0px 2px, #515258 0px 0px 0 1px, inset #000 0 -3px 10px, #DADADA 1px 0 0 1px;
+}
+
+#bottom-speaker {
+  position: absolute;
+  transform: rotateX(90deg);
+  top: 781px;
+  left: 70px;
+}
+#bottom-speaker div {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #6C6D72;
+  position: absolute;
+  box-shadow: inset #000 1px -1px 4px 1px, #DADADA 1px 0px;
+}
+#bottom-speaker div:nth-child(2) { left: 150px; }
+#bottom-speaker div:nth-child(3) { left: 162px; }
+#bottom-speaker div:nth-child(4) { left: 174px; }
+#bottom-speaker div:nth-child(5) { left: 186px; }
+#bottom-speaker div:nth-child(6) { left: 198px; }
+#bottom-speaker div:nth-child(7) { left: 210px; }
+
+#skrews {
+  position: absolute;
+  top: 780px;
+  left: 120px;
+  transform: rotateX(90deg);
+}
+#skrews div {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: rgb(95, 92, 92);
+  border-radius: 50%;
+  top: 0;
+  z-index: 4;
+  box-shadow: inset #999AA0  0 0 0px 2px, #444 1px 0px;
+}
+
+#skrews div:last-child {
+  left: 70px;
+}
+
+#lines {
+  position: absolute;
+  top: 82px;
+  left: -32px;
+  display: none;
+}
+#lines > div:last-child {
+  top: 634px;
+}
+
+#lines div {
+  width: 7px;
+  height: 11px;
+  position: absolute;
+  transform-style: preserve-3d;
+  transform-origin: 100% 100%;
+}
+
+#lines > div {
+  background: -webkit-linear-gradient(right,#393A3C,#5A595E);
+  transform: rotateY(90deg);
+}
+#lines > div > div {
+  background: -webkit-linear-gradient(right,#5A595E,#87868A);
+  transform: rotateY(17deg);
+  left: -6px;
+}
+#lines > div > div > div {
+  background: -webkit-linear-gradient(right,#87868A,#A8A6AD);
+  transform: rotateY(17deg);
+  left: -6px;
+}
+
+#shadow {
+  width: 350px;
+  height: 755px;
+  background: black;
+  position: absolute;
+  top: 5px;
+  left: 0;
+  transform: translateZ(-17px);
+  transform-style: preserve-3d;
+  box-shadow: #000 0 0 10px 15px;
+  opacity: 0.4;
+  border-top-left-radius: 76px;
+  border-top-right-radius: 200px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 56px;
+}
+
+#screen {
+  background: -webkit-linear-gradient(#A1E5E5,#1987AA);
+  width: 336px;
+  height: 589px;
+  position: absolute;
+  top: 80px;
+  left: 13px;
+  font-weight: 300;
+  color: #fff;
+  background-size: 200% 100%;
+  overflow: hidden;
+}
+
+#time {
+  font-size: 86px;
+  left: 57px;
+  top: 37px;
+  position: absolute;
+}
+#date {
+  font-size: 20px;
+  left: 85px;
+  top: 130px;
+  position: absolute;
+}
+
+#bottom {
+  width: 37px;
+  height: 7px;
+  border-radius: 5px;
+  background: #2AB1DB;
+  position: absolute;
+  top: 573px;
+  left: 149px;
+}
+#top {
+  width: 37px;
+  height: 7px;
+  border-radius: 5px;
+  background: #D7FFFF;
+  position: absolute;
+  top: 10px;
+  left: 149px;
+}
+#slide {
+  position: absolute;
+  top: 489px;
+  left: 88px;
+  font-size: 28px;
+  color: #2AB1DB;
+  background: linear-gradient(to right, #2EC4F3 30%, #fff, #2EC4F3 70%);
+  background-clip: text;
+  -webkit-background-clip: text; /* 웹킷 브라우저 호환성 */
+  color: transparent; /* 텍스트 색상을 투명으로 설정 */
+  background-size: 350px;
+  animation: slide 5s linear infinite;
+}
+
+@keyframes slide {
+  0% { background-position: 100px 0; }
+  40% { background-position: 440px 0; }
+  100% { background-position: 440px 0; }
+}
+
+#slide div {
+  transform: rotate(135deg);
+  border-left: 2px solid #2AB1DB;
+  border-top: 2px solid #2AB1DB;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  left: -29px;
+  top: 10px;
+}
+
+#signal {
+  position: absolute;
+  top: 9px;
+  left: 7px;
+}
+#signal div {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid #fff;
+  position: absolute;
+}
+#signal div:nth-child(2) {
+  left: 9px;
+}
+#signal div:nth-child(3) {
+  left: 18px;
+}
+#signal div:nth-child(4) {
+  left: 27px;
+}
+#signal div:nth-child(5) {
+  left: 36px;
+  background: none;
+}
+
+#battery {
+  position: absolute;
+  top: 3px;
+  left: 270px;
+  font-size: 13px;
+}
+#battery > div:last-child {
+  width: 27px;
+  height: 9px;
+  border: 1px solid #fff;
+  position: absolute;
+  top: 4px;
+  left: 27px;
+  border-radius: 2px;
+}
+#battery div div:first-child {
+  width: 21px;
+  height: 7px;
+  background: #fff;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+}
+#battery div div:last-child {
+  width: 1px;
+  height: 6px;
+  background: #FFF;
+  position: absolute;
+  left: 29px;
+  top: 2px;
+  border-radius: 0 1px 1px 0;
+}
+
+#fabrizio {
+  border-top: 100px solid black; 
+  border-right: 63px solid transparent;
+  width: 0;
+  transform: scale(.33);
+  transform-origin: 0 0;
+  margin: 20px;
+  opacity:.6;
+  position: absolute;
+  bottom: -130px;
+}
+#fabrizio:before {
+  background: black;
+  width: 20px;
+  height: 30px;
+  content: '';
+  display: block;
+  transform: skewX(-32deg);
+  position: relative;
+  top: -65px;
+  left: 29px;
+}
+#fabrizio:after {
+  background: black;
+  width: 40px;
+  height: 36px;
+  content: '';
+  display: block;
+  transform: skewX(-32deg);
+  position: relative;
+  top: -130px;
+  left: 49px;
+}
+
+#circle {
+  width: 50px;
+  height: 50px;
+  background: none;
+  border-radius: 50%;
+  box-shadow: rgba(255,255,255,0.1) 160px 335px,rgba(255,255,255,0.1) 120px 275px 0 12px,rgba(255,255,255,0.1) 60px 355px 0 23px,rgba(255,255,255,0.1) 230px 445px 0 -8px,rgba(255,255,255,0.1) 60px 125px,rgba(255,255,255,0.1) 260px 145px 0 12px,rgba(255,255,255,0.1) 300px 145px 0 23px,rgba(255,255,255,0.1) 100px 85px 0 -8px,rgba(255,255,255,0.1) 50px 155px,rgba(255,255,255,0.1) 150px 273px 0 -2px,rgba(255,255,255,0.1) 50px 555px 0 23px,rgba(255,255,255,0.1) 180px 5px 0 -8px;
+  animation: circle 30s linear infinite alternate;
+}
+
+@keyframes circle {
+  0%{
+    box-shadow: rgba(255,255,255,0.1) 160px 335px,rgba(255,255,255,0.1) 120px 275px 0 12px,rgba(255,255,255,0.1) 60px 355px 0 23px,rgba(255,255,255,0.1) 230px 445px 0 -8px,rgba(255,255,255,0.1) 60px 125px,rgba(255,255,255,0.1) 260px 145px 0 12px,rgba(255,255,255,0.1) 300px 145px 0 23px,rgba(255,255,255,0.1) 100px 85px 0 -8px,rgba(255,255,255,0.1) 350px 555px,rgba(255,255,255,0.1) 350px 273px 0 -2px,rgba(255,255,255,0.1) 150px 355px 0 23px,rgba(255,255,255,0.1) 180px 205px 0 -8px,rgba(255,255,255,0.1) 0px 0px 0 -8px,rgba(255,255,255,0.1) 100px 555px 0 10px;
+  }
+  100%{
+    box-shadow: rgba(255,255,255,0.1) 70px 10px,rgba(255,255,255,0.1) 300px 205px 0 12px,rgba(255,255,255,0.1) 0px 155px 0 23px,rgba(255,255,255,0.1) 330px 45px 0 -8px,rgba(255,255,255,0.1) 460px 325px,rgba(255,255,255,0.1) 0px 445px 0 12px,rgba(255,255,255,0.1) 300px 145px 0 23px,rgba(255,255,255,0.1) 100px 85px 0 -8px,rgba(255,255,255,0.1) 50px 155px,rgba(255,255,255,0.1) 150px 273px 0 -2px,rgba(255,255,255,0.1) 0px 555px 0 23px,rgba(255,255,255,0.1) 180px 5px 0 -8px,rgba(255,255,255,0.1) 300px 555px 0 -8px,rgba(255,255,255,0.1) 350px 355px 0 10px;
+  }
+}
+
+#reminder {
+  position: absolute;
+top: 230px;
+left: 40px;
+width: 296px;
+height: 50px;
+border-top: 1px solid #86E2F0;
+border-bottom: 1px solid #86E2F0;
+line-height: 50px;
+font-weight: 400;
+  opacity: 0;
+  animation: reminder .1s linear forwards 5s;
+}
+#reminder div:first-child {
+  background: #fff;
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  position: absolute;
+  top: 18px;
+}
+#reminder div:nth-child(2) {
+  position: absolute;
+  left: 30px;
+}
+#reminder div:last-child{
+   position: absolute;
+left: 251px;
+font-size: 11px;
+  color: #86E2F0;
+}
+
+@keyframes reminder {
+  100% {
+    opacity: 1;
+  }
+} 
+
+
+#awwwards {
+  position: absolute;
+  bottom: 30px;
+  left: 70px;
+}
+#awwwards a {
+  color: #444;
+  text-decoration: none;
+  border-bottom: 1px solid #888;
+}
+
+#coolors {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  color: #444;
+  text-decoration: none;
+  border-bottom: 1px solid #888;
+  animation: coolors 1s infinite;
+  opacity: 1;
+}
+@keyframes coolors {
+  50% { right: 40px; }
+}
+
+/* 모바일 디자인 끝 */
+/* 버튼 */
+.btn-box {
+  position: absolute; /* 부모 컨테이너를 기준으로 절대 위치 */
+  top: 90%; /* 상단에서 50% 아래로 */
+  left: 50%; /* 왼쪽에서 50% 오른쪽으로 */
+  transform: translate(-50%, -50%); /* 위에서 지정한 top, left를 기준으로 정확히 중앙에 위치하도록 변환 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-wrapper {
+  width: 290px;
+  height: 110px;
+  position: relative;
+  margin: 0; /* margin을 0으로 설정해 중앙 배치에 영향을 주지 않도록 설정 */
+}
+.btn-wrapper:hover .btn-inner {
+  top: -4px;
+  transform: scale(1, 1);
+  cursor: pointer;
+}
+.btn-wrapper__container {
+  border-bottom: 2px solid #15B5E2;
+  position: absolute;
+  width: 100%;
+  height: 80px;
+}
+.btn-wrapper__container:before, .btn-wrapper__container:after {
+  border-bottom: 2px solid #15B5E2;
+  width: 96%;
+  left: 2%;
+  bottom: -8px;
+  content: "";
+  position: absolute;
+}
+.btn-wrapper__container:after {
+  width: 92%;
+  left: 4%;
+  bottom: -14px;
+}
+.btn-wrapper__container .btn-inner {
+  width: 104.2%;
+  height: 100%;
+  position: absolute;
+  top: 20px;
+  left: -2.1%;
+  border: 2px solid #15B5E2;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 28px;
+  background: #10131C;
+  transform: scale(0.96, 0.96);
+  transition: all 0.3s;
+  z-index: 4;
+}
+.btn-wrapper__container .btn-inner__text {
+  text-decoration: none;
+  color: #15B5E2;
+}/*# sourceMappingURL=asd.css.map */
+
+/* 버튼끝 */
+
+/* 모달창 시작 */
+
+/* Modal Styles */
+.modal {
+  display: none; /* 모달 창을 기본적으로 숨김 */
+  position: fixed; 
+  z-index: 10; /* 모달 창이 다른 콘텐츠 위에 나타나도록 설정 */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* 콘텐츠가 넘칠 때 스크롤 가능하게 설정 */
+  background-color: rgba(0, 0, 0, 0.5); /* 배경 어둡게 설정 */
+}
+
+.modal-content {
+  position: relative;
+  margin: 15% auto; /* 화면 중앙에 위치하도록 설정 */
+  padding: 20px;
+  width: 80%;
+  max-width: 500px; /* 모달 창의 최대 너비 설정 */
+  background-color: #000000;
+  border-radius: 5px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: #ffffff;
+  font-size: 50px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-content h2 {
+  color: #15B5E2; /* 제목의 색상을 주황색으로 변경 */
+}
+
+.modal-content p {
+  color: #15B5E2; /* 본문 텍스트의 색상을 파란색으로 변경 */
+}
+/* 모달창 끝 */
