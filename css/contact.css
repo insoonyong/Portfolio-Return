@@ -854,10 +854,9 @@ font-size: 11px;
 
 /* Desktop devices (min-width: 1024px) */
 /* Mobile devices (max-width: 767px) */
-@media (max-width: 767px) {
+@media (max-width: 367px) {
   .iphonetop h2{
-    font-size: 50px;
-    line-height: 3;
+    font-size: 40px;
   }
   .menu-btn {
     height: 40px;
