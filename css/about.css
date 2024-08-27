@@ -1,17 +1,22 @@
+/* 기본 스타일 */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Lato', sans-serif;
-  font-family: 'Oswald', sans-serif;
 }
+
+/* 전체 페이지 스타일 */
 body, html {
   height: 100%;
   margin: 0;
-  background-color: #000; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000;
 }
 
-
+/* 메뉴와 레이아웃 스타일 */
 .wrapper {
   position: fixed;
   top: 0;
@@ -133,120 +138,176 @@ input[type="checkbox"] {
   }
 }
 
-  /* 네비 끝*/
 
-  
-  .profile {
-    position: relative;
-    padding: 40px;
-    top: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    gap: 100px;
-    width: 100%;
-  }
-  
-  .profileinner {
-    position: relative;
-    display: inline-block;
-  }
-  
-  /* 이미지 스타일 */
-  .profileinner img {
-    display: flex;
-    width: 500px; /* 이미지가 부모 요소의 너비에 맞게 설정 */
-    height: auto; /* 이미지 비율 유지 */
-    filter: grayscale(100%); /* 기본적으로 흑백으로 설정 */
-    transition: filter 0.5s ease; /* 부드러운 전환을 위해 추가 */
-    border-radius: 2ss0px;
-  }
+/* The Goods 스타일 */
+.the-goods {
+  font-size: 160px;
+  text-align: center;
+  margin: 60px auto 0px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-family: Righteous;
+  color: white;
+  max-width: 1150px;
+}
+
+.the-goods span {
+  text-shadow: 
+    -1px 0 0px #00BFFF, 
+    0 1px 0px #1E90FF, 
+    -2px 1px 0px #4169E1, 
+    -1px 2px 0px #4682B4, 
+    -3px 2px 0px #87CEFA, 
+    -2px 3px 0px #00BFFF, 
+    -4px 3px 0px #1E90FF, 
+    -3px 4px 0px #4169E1, 
+    -5px 4px 0px #4682B4, 
+    -4px 5px 0px #87CEFA, 
+    -6px 5px 0px #00BFFF, 
+    -5px 6px 15px rgba(0, 0, 0, 0.5); /* Optional dark shadow for depth */
+  display: inline-block;
+  position: relative;
+  padding: 0px 6px;
+  transition: 0.8s;
+  transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+}
+.the-goods:hover {
+  cursor: pointer;
+}
+
+.the-goods:hover span:nth-child(odd) { 
+  transform: rotateX(10deg) rotateY(10deg) rotateZ(-370deg); 
+}
+
+.the-goods:hover span:nth-child(even) { 
+  transform: rotateX(10deg) rotateY(10deg) rotateZ(370deg);
+}
+
+/* Profile 스타일 */
+.profile {
+  position: relative;
+  padding: 40px;
+  top: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 100px;
+  width: 100%;
+}
+
+.profileinner {
+  position: relative;
+  display: inline-block;
+}
+
+.profileinner img {
+  display: flex;
+  width: 500px; /* 이미지가 부모 요소의 너비에 맞게 설정 */
+  height: auto; /* 이미지 비율 유지 */
+  filter: grayscale(100%); /* 기본적으로 흑백으로 설정 */
+  transition: filter 0.5s ease; /* 부드러운 전환을 위해 추가 */
+  border-radius: 20px;
+}
 
 .profileinner img:hover {
-    filter: grayscale(0%); /* 호버 시 흑백 필터 제거 */
+  filter: grayscale(0%); /* 호버 시 흑백 필터 제거 */
 }
-    .imgtext h2 {
-      font-size: 160px;
-      line-height: 2;
-      color: #15B5E2;
-    }
-    .irregular-text {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      width: 100%;
-    }
-    
-    .irregular-text span {
-      font-size: calc(25px + 2vw); /* 크기를 불규칙하게 설정 */
-      font-weight: bold;
-      color: #15B5E2;
-      margin: 10px;
-      display: inline-block;
-      transition: all 0.3s ease-in-out;
-      transform: rotate(calc(var(--angle, 0) * 1deg)) translate(calc(var(--x, 0) * 1px), calc(var(--y, 0) * 1px));
-      opacity: calc(0.8 + 0.2 * (var(--angle, 0) / 45)); /* 불규칙한 투명도 */
-    }
-    
-    /* 각 단어의 스타일을 개별적으로 설정 */
-    .irregular-text span:nth-child(1) {
-      --angle: -10;
-      --x: 10;
-      --y: -10;
-    }
-    
-    .irregular-text span:nth-child(2) {
-      --angle:4;
-      --x: 20;
-      --y: 25;
-    }
-    
-    .irregular-text span:nth-child(3) {
-      --angle: -2;
-      --x: 30;
-      --y: -10;
-    }
-    
-    
-    .irregular-text {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 5px;
-      cursor: pointer;
-    }
-    
-    .text-item {
-      font-size: 24px;
-      transition: transform 0.3s;
-    }
-    
-    .text-item:hover {
-      transform: scale(1.2);
-    }
-    
-    /* Modal styles */
-    /* Irregular text styling */
+
+.imgtext h2 {
+  font-size: 160px;
+  line-height: 2;
+  color: #15B5E2;
+}
+
+/* Irregular Text 스타일 */
 .irregular-text {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
+  font-size: 60px;
+  text-align: center;
+  margin: 60px auto 0;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-family: 'Righteous', sans-serif;
+  color: white;
+  max-width: 1150px;
+  perspective: 1000px; /* Add perspective for 3D effect */
+  transform-style: preserve-3d; /* Add this line */
+}
+
+.irregular-text .text-item {
+  display: block;
+  margin: 20px 0;
+}
+
+.irregular-text .span-letter {
+  display: inline-block;
+  position: relative;
+  padding: 0 6px;
+  transition: transform 0.8s, text-shadow 0.3s;
+  transform-style: preserve-3d; /* Ensure 3D transform is preserved */
+}
+
+.irregular-text .item-1 .span-letter {
+  text-shadow: 
+    -1px 0 0px #00BFFF, 
+    0 1px 0px #1E90FF, 
+    -2px 1px 0px #4169E1, 
+    -1px 2px 0px #4682B4, 
+    -3px 2px 0px #87CEFA, 
+    -2px 3px 0px #00BFFF, 
+    -4px 3px 0px #1E90FF, 
+    -3px 4px 0px #4169E1, 
+    -5px 4px 0px #4682B4, 
+    -4px 5px 0px #87CEFA, 
+    -6px 5px 0px #00BFFF, 
+    -5px 6px 15px rgba(0, 0, 0, 0.5);
+}
+
+.irregular-text .item-2 .span-letter {
+  text-shadow: 
+    -1px 0 0px #FF6347, 
+    0 1px 0px #FF4500, 
+    -2px 1px 0px #FF8C00, 
+    -1px 2px 0px #FFD700, 
+    -3px 2px 0px #FFA07A, 
+    -2px 3px 0px #FF6347, 
+    -4px 3px 0px #FF4500, 
+    -3px 4px 0px #FF8C00, 
+    -5px 4px 0px #FFD700, 
+    -4px 5px 0px #FFA07A, 
+    -6px 5px 0px #FF6347, 
+    -5px 6px 15px rgba(0, 0, 0, 0.5);
+}
+
+.irregular-text .item-3 .span-letter {
+  text-shadow: 
+    -1px 0 0px #32CD32, 
+    0 1px 0px #228B22, 
+    -2px 1px 0px #006400, 
+    -1px 2px 0px #7FFF00, 
+    -3px 2px 0px #00FF00, 
+    -2px 3px 0px #32CD32, 
+    -4px 3px 0px #228B22, 
+    -3px 4px 0px #006400, 
+    -5px 4px 0px #7FFF00, 
+    -4px 5px 0px #00FF00, 
+    -6px 5px 0px #32CD32, 
+    -5px 6px 15px rgba(0, 0, 0, 0.5);
+}
+
+.irregular-text:hover .span-letter {
   cursor: pointer;
-  font-family: 'Oswald', sans-serif;
 }
 
-.text-item {
-  font-size: 24px;
-  transition: transform 0.3s;
+.irregular-text:hover .span-letter:nth-child(odd) { 
+  transform: rotateX(10deg) rotateY(10deg) rotateZ(-10deg);
 }
 
-.text-item:hover {
-  transform: scale(1.2);
+.irregular-text:hover .span-letter:nth-child(even) { 
+  transform: rotateX(10deg) rotateY(10deg) rotateZ(10deg);
 }
 
-/* Modal styles */
+/* Modal 스타일 */
 .modal {
   display: none; /* Hidden by default */
   position: fixed;
@@ -261,14 +322,15 @@ input[type="checkbox"] {
 
 .modal-content {
   background-color: #000;
-  margin: 15% auto; /* 상단에서 5% 아래에 위치시키고 가운데 정렬 */
+  margin: 15% auto; /* 상단에서 15% 아래에 위치시키고 가운데 정렬 */
   padding: 20px;
   border: 1px solid #888;
-  width: 80%;
+  width: 100%;
   text-align: center;
-  max-width: 600px; /* 필요한 경우 너비 조정 */
+  max-width: 700px; /* 필요한 경우 너비 조정 */
   max-height: 80%; /* 모달의 최대 높이 */
 }
+
 .close {
   color: #aaa;
   float: right;
@@ -278,20 +340,27 @@ input[type="checkbox"] {
 
 .close:hover,
 .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
-/* 모달 컨텐츠 */
 
-.insoon  img {
+/* Modal 컨텐츠 */
+.insoon img {
   width: 100%;
   height: auto; /* 이미지 비율 유지 */
   object-fit: cover; /* 이미지가 모달의 크기에 맞게 조정 */
 }
+.sklilimg {
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
 .sklilimg > img {
-  width: 50px;
-  height: 50px;
+  width: 90px;
+  height: 90px;
 }
 .nametxt {
   display: block;
@@ -301,13 +370,15 @@ input[type="checkbox"] {
 
 .nametxt p {
   font-size: 30px;
-  
+  color: #15B5E2;
 }
 
 .nametxt > p > span {
   font-size: 40px;
   font-weight: bold;
+  color: #15B5E2;
 }
+
 /* 버튼 기본 스타일 */
 :root {
   --color: #2194E0;
@@ -365,8 +436,6 @@ input[type="checkbox"] {
   text-decoration: none; /* 링크 밑줄 제거 */
 }
 
-
-/* 링크 스타일 제거 (버튼 내부의 a 태그 제거) */
 .gradient-button a {
   text-decoration: none;
   color: inherit; /* 버튼 텍스트 색상 상속 */
@@ -376,86 +445,94 @@ input[type="checkbox"] {
   line-height: 100%; /* 버튼의 높이와 맞춰줍니다 */
   text-align: center;
 }
-/* 버튼 배경끝 */
+
+/* 반응형 디자인 */
+@media (max-width: 1200px) {
+  .the-goods {
+    font-size: 120px;
+  }
+
+  .profileinner img {
+    width: 400px;
+  }
+
+  .imgtext h2 {
+    font-size: 120px;
+  }
+
+  .irregular-text {
+    font-size: 50px;
+  }
+}
 
 @media (max-width: 768px) {
+  .iphonetop h2{
+    font-size: 50px;
+    line-height: 3;
+  }
   .menu-btn {
+    height: 40px;
+    width: 40px;
+    font-size: 14px;
+  }
   
-    height: 55px;
-    width: 55px;
-    font-size: 18px;
-  }
-  .menu-btn ul li{
-
-  
-    margin-right:2pxpx;
-  }
-  .wrapper ul li a {
-    font-size: 24px;
-    padding: 5px 20px;
+  #wrapper {
+    height: auto; /* Adjust height automatically */
+    width: 100%; /* Full width */
+    margin: 0; /* Remove margin */
+    position: relative; /* Relative positioning */
+    top: 0;
+    left: 0;
+    
   }
 
-  .content .title {
-    font-size: 30px;
-  }
-  .modal-content{
-    height: 600px;
-  }
-  .content p {
-    font-size: 25px;
-  }
-  .insoon > img {
-    width: 100%;
-    height: 600pp; /* 이미지 비율 유지 */
-    object-fit: cover; /* 이미지가 모달의 크기에 맞게 조정 */
-  }
-  .profile{
-    display: block;
-    align-items: center;
-    justify-content: center;
+  .the-goods {
+    font-size: 80px;
   }
 
+  .profile {
+    flex-direction: column;
+    gap: 20px;
+  }
 
   .profileinner img {
     width: 300px;
-    height: 500px;
+  }
+
+  .imgtext h2 {
+    font-size: 80px;
+  }
+
+  .irregular-text {
+    font-size: 40px;
   }
 }
 
 @media (max-width: 480px) {
   .menu-btn {
-    height: 35px;
     width: 35px;
-    font-size: 16px;
+    height: 35px;
+    font-size: 14px;
   }
 
   .wrapper ul li a {
-    display: flex;
-    text-align: center;
-    font-size: 30px;
-    padding: 5px 15px;
-  }
-
-  .content .title {
-    font-size: 25px;
-  }
-
-  .content p {
     font-size: 20px;
+    padding: 5px 10px;
   }
-  .profile{
-    display: block;
-    align-items: center;
-    justify-content: center;
+
+  .the-goods {
+    font-size: 60px;
+  }
+
+  .profileinner img {
+    width: 250px;
+  }
+
+  .imgtext h2 {
+    font-size: 60px;
   }
 
   .irregular-text {
-    
-    width: 400px;
-  }
-  
-  .profileinner img {
-    width: 250px;
-    height: 400px;
+    font-size: 30px;
   }
 }

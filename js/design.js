@@ -117,32 +117,56 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 // 끝
 document.addEventListener('DOMContentLoaded', function() {
-    const popupBtns = document.querySelectorAll('.popup-btn');
-    const closeBtns = document.querySelectorAll('.popup-close');
-    const popupOverlay = document.getElementById('popupOverlay');
+    var popupBtns = document.querySelectorAll('.popup-btn');
+    var overlay = document.getElementById('popupOverlay');
+    var popups = document.querySelectorAll('.popup');
+    var closeBtns = document.querySelectorAll('.popup-close');
 
-    popupBtns.forEach(button => {
-        button.addEventListener('click', function() {
-            const popupId = this.getAttribute('data-popup');
-            const popup = document.getElementById(popupId);
-            popup.classList.add('active');
-            popupOverlay.classList.add('active');
+    // 팝업 열기
+    popupBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var popupId = this.getAttribute('data-popup');
+            document.getElementById(popupId).style.display = 'block';
+            overlay.style.display = 'block';
         });
     });
 
-    closeBtns.forEach(button => {
-        button.addEventListener('click', function() {
-            const popup = this.closest('.popup');
-            popup.classList.remove('active');
-            popupOverlay.classList.remove('active');
+    // 팝업 닫기
+    closeBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            this.closest('.popup').style.display = 'none';
+            overlay.style.display = 'none';
         });
     });
 
-    popupOverlay.addEventListener('click', function() {
-        document.querySelectorAll('.popup.active').forEach(popup => {
-            popup.classList.remove('active');
+    // 오버레이 클릭 시 팝업 닫기
+    overlay.addEventListener('click', function() {
+        popups.forEach(function(popup) {
+            popup.style.display = 'none';
         });
-        popupOverlay.classList.remove('active');
+        overlay.style.display = 'none';
+    });
+
+    // "더 알아보기" 버튼 클릭 이벤트 설정
+    var actionBtns = document.querySelectorAll('.popup-action-btn');
+    
+    actionBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var popupId = this.getAttribute('data-popup');
+            
+            if (popupId === 'popup1-action') {
+                window.location.href = 'https://example.com/포멘트';
+            } else if (popupId === 'popup2-action') {
+                window.location.href = 'https://example.com/핸드크림';
+            } else if (popupId === 'popup3-action') {
+                window.location.href = 'https://example.com/카카오';
+            } else if (popupId === 'popup4-action') {
+                window.location.href = 'https://example.com/진로';
+            } else if (popupId === 'popup5-action') {
+                window.location.href = 'https://example.com/tripmate';
+            } else if (popupId === 'popup6-action') {
+                window.location.href = 'https://example.com/핏모드';
+            }
+        });
     });
 });
-

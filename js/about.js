@@ -27,3 +27,50 @@
      event.target.style.display = 'none';
    }
  });
+
+ // Function to wrap each letter of the text in a span
+function spanLetters(elements) {
+  elements.forEach(function(element) {
+    // Get the text of the element
+    var text = element.textContent;
+    
+    // Create an array with each letter wrapped in a span
+    var spannedText = text.split('').map(function(letter, index) {
+      return '<span class="sl' + (index + 1) + ' span-letter">' + letter + '</span>';
+    }).join('');
+    
+    // Replace the original text with the new spanned text
+    element.innerHTML = spannedText;
+  });
+}
+
+// Use the function on elements with the class "the-goods"
+document.addEventListener('DOMContentLoaded', function() {
+  var elements = document.querySelectorAll('.the-goods');
+  spanLetters(elements);
+});
+
+function spanLetters(elements) {
+  elements.forEach(function(element) {
+    // Get the text of the element
+    var text = element.textContent;
+    
+    // Create an array with each letter wrapped in a span
+    var spannedText = text.split('').map(function(letter, index) {
+      // Handle line breaks separately
+      if (letter === '<') {
+        return '<br>';
+      }
+      return '<span class="span-letter">' + letter + '</span>';
+    }).join('');
+    
+    // Replace the original text with the new spanned text
+    element.innerHTML = spannedText;
+  });
+}
+
+// Use the function on elements with the class "text-item"
+document.addEventListener('DOMContentLoaded', function() {
+  var elements = document.querySelectorAll('.text-item');
+  spanLetters(elements);
+});

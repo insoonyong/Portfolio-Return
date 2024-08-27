@@ -1,19 +1,24 @@
+@font-face {
+  font-family: Helvetica;
+  src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/164210/HelveticaNeue-UltraLight.otf) format('TrueType');
+font-weight: 300;
+}
+/* 기본 스타일 */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Lato', sans-serif;
-  font-family: 'Oswald', sans-serif;
 }
+
+/* 전체 페이지 스타일 */
 body, html {
-  width: 100%;
-  height: 100vh;
+  height: 100%;
   margin: 0;
   background: #000;
-  overflow-x: hidden;
 }
 
-
+/* 메뉴와 레이아웃 스타일 */
 .wrapper {
   position: fixed;
   top: 0;
@@ -31,7 +36,7 @@ body, html {
 }
 
 .menu-btn {
-  position: absolute;
+  position: fixed;
   z-index: 100;
   right: 20px;
   top: 20px;
@@ -134,86 +139,13 @@ input[type="checkbox"] {
     filter: hue-rotate(360deg);
   }
 }
+/* 끝 */
 
-/* 별똥별 시작 */
-:root {
-  --shooting-time: 4000ms;
-}
-
-
-.shooting_star {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  height: 2px;
-  background: linear-gradient(-45deg, rgba(95, 145, 255, 0.35), rgba(0, 0, 255, 0));
-  border-radius: 999px;
-  filter: drop-shadow(0 0 6px rgba(105, 155, 255, 1));
-  animation:
-    tail var(--shooting-time) linear infinite,
-    shooting var(--shooting-time) linear infinite;
-}
-
-/* tail 애니메이션의 키프레임 */
-@keyframes tail {
-  0% {
-    width: 0;
-    opacity: 0;
-  }
-  
-  25% {
-    opacity: 1;
-  }
-  
-  75% {
-    opacity: 1;
-  }
-  
-  100% {
-    width: 100%;
-    opacity: 0;
-  }
-}
-
-/* shooting 애니메이션의 키프레임 */
-@keyframes shooting {
-  0% {
-    transform: translateX(0);
-  }
-  
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-/* 각 shooting_star 요소에 대한 스타일 */
-.shooting_star:nth-child(1)  { animation-delay: 0ms; top: 7%; }
-.shooting_star:nth-child(2)  { animation-delay: 220ms; top: 15%; }
-.shooting_star:nth-child(3)  { animation-delay: 450ms; top: 25%; }
-.shooting_star:nth-child(4)  { animation-delay: 90ms; top: 35%; }
-.shooting_star:nth-child(5)  { animation-delay: 600ms; top: 50%; }
-.shooting_star:nth-child(6)  { animation-delay: 130ms; top: 63%; }
-.shooting_star:nth-child(7)  { animation-delay: 880ms; top: 42%; }
-.shooting_star:nth-child(8)  { animation-delay: 1110ms; top: 78%; }
-.shooting_star:nth-child(9)  { animation-delay: 590ms; top: 88%; }
-.shooting_star:nth-child(10) { animation-delay: 1570ms; top: 10%; }
-.shooting_star:nth-child(11) { animation-delay: 330ms; top: 18%; }
-.shooting_star:nth-child(12) { animation-delay: 1430ms; top: 70%; }
-.shooting_star:nth-child(13) { animation-delay: 770ms; top: 37%; }
-.shooting_star:nth-child(14) { animation-delay: 1910ms; top: 52%; }
-.shooting_star:nth-child(15) { animation-delay: 500ms; top: 85%; }
-.shooting_star:nth-child(16) { animation-delay: 2020ms; top: 58%; }
-.shooting_star:nth-child(17) { animation-delay: 111ms; top: 28%; }
-.shooting_star:nth-child(18) { animation-delay: 1770ms; top: 67%; }
-.shooting_star:nth-child(19) { animation-delay: 420ms; top: 11%; }
-.shooting_star:nth-child(20) { animation-delay: 960ms; top: 92%; }
-
-/* 별똥별 끝 */
-/* 덱스트 */
+/* 텍스트 */
 .iphonetop {
-  color: #86E2F0;
+  height: 200px;
   text-align: center;
-  margin-top: 120px;
+  margin-top: 30px;
 }
 .iphonetop h2 {
   font-size: 100px;
@@ -229,7 +161,7 @@ input[type="checkbox"] {
   margin-top: -260px;
   position: absolute;
   perspective: 6000px;
-  top: 50%;
+  top: 600px;
   left: 50%;
 }
 #iphone {
@@ -241,9 +173,97 @@ input[type="checkbox"] {
   box-shadow: none;
   left: 206px;
   top: -140px;
-  transform: rotateX(54deg) rotateZ(-46deg);
+  transition: transform 0.5s ease-in-out;
+  transform: rotateX(30deg) rotateZ(-45deg);
   transform-style: preserve-3d;
 }
+#iphone:hover {
+  transform: rotateX(0deg) rotateY(0deg);
+  /* 호버 시 아이폰이 원래 각도로 돌아오도록 설정 */
+}
+/* 슬라이드 */
+/* 전체 화면을 덮는 배경 */
+.modal {
+  display: none; /* 기본적으로 숨김 */
+  position: fixed; /* 페이지 스크롤에 영향을 받지 않음 */
+  z-index: 1; /* 최상위 */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4); /* 검은색 배경에 투명도 */
+}
+
+/* 모달 창 내용 스타일 */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 가운데 정렬 */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* 화면 크기에 따라 조정 가능 */
+}
+
+/* 닫기 버튼 스타일 */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 아이폰 스타일의 슬라이드 버튼 */
+#slide {
+  position: absolute;
+  bottom: 20px;
+  height: 50px;
+  background: #e0e0e0;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.6);
+  cursor: pointer;
+  overflow: hidden;
+  transition: background 0.3s;
+}
+
+/* 슬라이더의 핸들 스타일 */
+.slider-thumb {
+  width: 50px;
+  height: 50px;
+  background: #007bff;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  transition: transform 0.3s;
+}
+
+/* 슬라이드 버튼 텍스트 스타일 */
+.slider-text {
+  margin-left: 70px;
+  color: #333;
+  font-size: 18px;
+  font-family: 'Lato', sans-serif;
+}
+
+/* 슬라이드 버튼 활성화 시 배경색 변경 */
+#slide.active {
+  color: white;
+}
+
+
+/* 슬라이드 버튼 핸들 활성화 시 이동 */
+#slide.active .slider-thumb {
+  transform: translateX(calc(100% - 60px)); /* 핸들이 끝까지 이동 */
+}
+/* 슬라이드 끝 */
 #side {
  background: #CDD0D5;
   width: 393px;
@@ -550,10 +570,9 @@ input[type="checkbox"] {
   left: 88px;
   font-size: 28px;
   color: #2AB1DB;
-  background: linear-gradient(to right, #2EC4F3 30%, #fff, #2EC4F3 70%);
-  background-clip: text;
-  -webkit-background-clip: text; /* 웹킷 브라우저 호환성 */
-  color: transparent; /* 텍스트 색상을 투명으로 설정 */
+  background: -webkit-linear-gradient(left,#2EC4F3 30%,#fff,#2EC4F3 70%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   background-size: 350px;
   animation: slide 5s linear infinite;
 }
@@ -636,37 +655,37 @@ input[type="checkbox"] {
 }
 
 #fabrizio {
-  border-top: 100px solid black; 
-  border-right: 63px solid transparent;
-  width: 0;
-  transform: scale(.33);
-  transform-origin: 0 0;
-  margin: 20px;
-  opacity:.6;
+	border-top: 100px solid black; 
+	border-right: 63px solid transparent;
+	width: 0;
+	transform: scale(.33);
+	transform-origin: 0 0;
+	margin: 20px;
+	opacity:.6;
   position: absolute;
   bottom: -130px;
 }
 #fabrizio:before {
-  background: black;
-  width: 20px;
-  height: 30px;
-  content: '';
-  display: block;
-  transform: skewX(-32deg);
-  position: relative;
-  top: -65px;
-  left: 29px;
+	background: black;
+	width: 20px;
+	height: 30px;
+	content: '';
+	display: block;
+	transform: skewX(-32deg);
+	position: relative;
+	top: -65px;
+	left: 29px;
 }
 #fabrizio:after {
-  background: black;
-  width: 40px;
-  height: 36px;
-  content: '';
-  display: block;
-  transform: skewX(-32deg);
-  position: relative;
-  top: -130px;
-  left: 49px;
+	background: black;
+	width: 40px;
+	height: 36px;
+	content: '';
+	display: block;
+	transform: skewX(-32deg);
+	position: relative;
+	top: -130px;
+	left: 49px;
 }
 
 #circle {
@@ -750,78 +769,16 @@ font-size: 11px;
 @keyframes coolors {
   50% { right: 40px; }
 }
-
 /* 모바일 디자인 끝 */
-/* 버튼 */
-.btn-box {
-  position: absolute; /* 부모 컨테이너를 기준으로 절대 위치 */
-  top: 90%; /* 상단에서 50% 아래로 */
-  left: 50%; /* 왼쪽에서 50% 오른쪽으로 */
-  transform: translate(-50%, -50%); /* 위에서 지정한 top, left를 기준으로 정확히 중앙에 위치하도록 변환 */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* 전면 모바일 */
+#home:hover + #iphone {
+  transform: rotateX(0deg) rotateZ(0deg) !important;
+  transition: transform 0.5s ease;
 }
-
-.btn-wrapper {
-  width: 290px;
-  height: 110px;
-  position: relative;
-  margin: 0; /* margin을 0으로 설정해 중앙 배치에 영향을 주지 않도록 설정 */
-}
-.btn-wrapper:hover .btn-inner {
-  top: -4px;
-  transform: scale(1, 1);
-  cursor: pointer;
-}
-.btn-wrapper__container {
-  border-bottom: 2px solid #15B5E2;
-  position: absolute;
-  width: 100%;
-  height: 80px;
-}
-.btn-wrapper__container:before, .btn-wrapper__container:after {
-  border-bottom: 2px solid #15B5E2;
-  width: 96%;
-  left: 2%;
-  bottom: -8px;
-  content: "";
-  position: absolute;
-}
-.btn-wrapper__container:after {
-  width: 92%;
-  left: 4%;
-  bottom: -14px;
-}
-.btn-wrapper__container .btn-inner {
-  width: 104.2%;
-  height: 100%;
-  position: absolute;
-  top: 20px;
-  left: -2.1%;
-  border: 2px solid #15B5E2;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  font-size: 28px;
-  background: #10131C;
-  transform: scale(0.96, 0.96);
-  transition: all 0.3s;
-  z-index: 4;
-}
-.btn-wrapper__container .btn-inner__text {
-  text-decoration: none;
-  color: #15B5E2;
-}/*# sourceMappingURL=asd.css.map */
-
-/* 버튼끝 */
+/* 전면 모바일 끝 */
 
 /* 모달창 시작 */
 
-/* Modal Styles */
 .modal {
   display: none; /* 모달 창을 기본적으로 숨김 */
   position: fixed; 
@@ -830,6 +787,7 @@ font-size: 11px;
   top: 0;
   width: 100%;
   height: 100%;
+  text-align: center;
   overflow: auto; /* 콘텐츠가 넘칠 때 스크롤 가능하게 설정 */
   background-color: rgba(0, 0, 0, 0.5); /* 배경 어둡게 설정 */
 }
@@ -861,12 +819,113 @@ font-size: 11px;
   text-decoration: none;
   cursor: pointer;
 }
+.contact {
+  display: block;
+  align-items: center;
+  justify-content: center;
+}
+.tel h2 {
+  font-size: 40px;
+  display: inline-block;
+  animation: jump 0.5s infinite;
+}
+@keyframes jump {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
 
-.modal-content h2 {
+.tel > ul > li {
+  font-size: 24px;
+  list-style-type: none;
+  line-height: 3;
+} 
+.modal-content  {
   color: #15B5E2; /* 제목의 색상을 주황색으로 변경 */
 }
 
-.modal-content p {
+.modal-content  {
   color: #15B5E2; /* 본문 텍스트의 색상을 파란색으로 변경 */
 }
 /* 모달창 끝 */
+
+/* Desktop devices (min-width: 1024px) */
+/* Mobile devices (max-width: 767px) */
+@media (max-width: 767px) {
+  .iphonetop h2{
+    font-size: 50px;
+    line-height: 3;
+  }
+  .menu-btn {
+    height: 40px;
+    width: 40px;
+    font-size: 14px;
+  }
+  
+  #wrapper {
+    height: auto; /* Adjust height automatically */
+    width: 100%; /* Full width */
+    margin: 0; /* Remove margin */
+    position: relative; /* Relative positioning */
+    top: 0;
+    left: 0;
+    
+  }
+
+  
+  #iphone {
+    height: auto; /* Adjust height automatically */
+    width: 90%; /* Adjust width */
+    left: 8%; /* Center horizontally */
+    top: 30px; /* Position at the top */
+    transform: none; /* Remove 3D transform */
+  }
+
+}
+
+
+/* Tablet devices (768px to 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  #wrapper {
+    height: auto; /* Adjust height automatically */
+    width: 90%; /* Adjust width */
+    margin: 0; /* Remove margin */
+    position: relative; /* Relative positioning */
+    top: 0;
+    left: 10%; /* Center horizontally */
+  }
+  
+  #iphone {
+    height: auto; /* Adjust height automatically */
+    width: 80%; /* Adjust width */
+    left: 25%; /* Center horizontally */
+    top: 0; /* Position at the top */
+    transform: none; /* Remove 3D transform */
+  }
+  
+}
+
+/* Desktop devices (min-width: 1024px) */
+@media (min-width: 1024px) {
+  #wrapper {
+    height: 520px; /* Default height */
+    width: 800px; /* Default width */
+    margin-left: -400px;
+    margin-top: -260px;
+    position: absolute;
+    perspective: 6000px;
+    top: 60%;
+    left: 50%;
+  }
+  
+  #iphone {
+    height: 760px; /* Default height */
+    width: 372px; /* Default width */
+    left: 206px; /* Default position */
+    top: -140px; /* Default position */
+    transform: rotateX(54deg) rotateZ(-46deg); /* Default 3D transform */
+  }
+}
